@@ -1,0 +1,104 @@
+const {resolve} = require('path');
+const MSEP= require('mini-css-extract-plugin');
+const HWP = require('html-webpack-plugin');
+const O = require('optimize-css-assets-webpack-plugin');
+module.exports = {
+    //入口
+    entry:'./src/js/index.js',
+    //出口
+    output:{
+        filename:'js/built.js',//输入文件名
+        path: resolve(__dirname,'build')
+    },
+    module:{
+        rules:[
+            //css文件处理
+            {
+                test:/\.css$/,
+                use:[
+                    MSEP.loader,//提取css成单独文件
+                    'postcss-loader',//css兼容性处理
+                    'css-loader'
+                ]
+            },
+            //less文件处理
+            {
+                test:/\.less$/,
+                use:[
+                    MSEP.loader,//提取css成单独文件
+                    'css-loader',
+                    'postcss-loader',//css兼容性处理，只能对css处理，所以要在less先解析成css再兼容性处理
+                    'less-loader'
+                ]
+            },
+            //css文件中处理图片文件
+            {
+                test:/\.(png|jpg|gif)$/,
+                loader:'url-loader',
+                options:{
+                    limit:8*1024,
+                    esModule:false,
+                    outputPath:'imgs'
+                }
+            },
+            //html中引用的图片
+            {
+                test:/\.html$/,
+                loader:'html-loader',
+            },
+            //js检查代码
+            {
+                test:/\.js$/,
+                exclude:/node_modules/,
+                loader:'eslint-loader',
+                options:{
+                    fix:true//自动修正
+                }
+            },
+            //js兼容性
+            {
+                test:/\.js$/,
+                exclude:/node_modules/,
+                loader:'babel-loader',
+                options:{
+                    presets:[
+                        [
+                            '@babel/preset-env',
+                            {
+                                useBaseIns:'usage',
+                                corejs:{version:3},
+                                target:{
+                                    chrome:'60',
+                                    firefox:'50'
+                                }
+                            }
+                        ]
+                    ]
+                }
+            },
+            //其他文件处理
+            {
+                exclude:/\.(css|less|js|png|jpg|gif|html)$/,
+                loader:'file-loader',
+                options:{
+                    outputPath:'media'
+                }
+            }
+        ]
+    },
+    plugins:[
+        //提取css至built.css成单独文件，不合在js中
+        new MSEP({
+            filename:'built.css'
+        }),
+        new HWP({
+            template:'./src/index.html',
+            minify:{//压缩html文件
+                collapseWhitespace:true,//删除空格
+                removeComments:true//删除注释
+            }
+        }),
+        new O()//对css压缩的插件
+    ],//插件
+    mode:"production"//模式，生产模式自动压缩js代码
+}
