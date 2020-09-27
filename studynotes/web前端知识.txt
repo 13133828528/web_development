@@ -1,0 +1,11 @@
+HTML5 CSS3 Javascript。相关项目开发经验和成果。
+
+前端工程化，用过git，gulp或webpack等工具，github。
+
+基于Ajax应用的开发经验，
+
+有nodeJs/java开发经验，移动端开发经验。
+
+web标准，可用性，可访问性。
+
+对算法、数据结构、建模有一定了解。

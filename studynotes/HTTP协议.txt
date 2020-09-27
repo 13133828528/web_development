@@ -1,0 +1,64 @@
+HTTP Hyper Text Transter Protocol (超文本传输协议)；
+
+基于TCP/IP的应用层协议，主要用来规定客户端和服务端的数据传输格式。
+
+http是基于请求与响应模式的、无状态（不会记录请求方）的应用层协议。
+
+缓存：不需要请求服务器，浏览器直接解析本地存储的副本。
+
+客户端发送请求，服务端响应请求并返回所需的超文本标记语言，由浏览器解析成网页。
+
+请求报文：
+1. 请求行：
+请求方法（get获取资源/post提交资源/put替换资源/delete删除资源）
++URL（协议 + 域名或ip地址 + 端口号 + 资源路径 +发送的参数（get请求））找到资源
++HTTP版本 
+2. 请求头：附加的、需要服务器知道的
+键值对形式
+Host-----------主机ip地址或域名
+User-Agent----客户端相关信息
+Accept---------指定客户端收集信息类型，image/jpg
+Accept-Charset----客户端接受的字符集，gbk
+Accept-Encoding----可接受的内容编码
+Accept-Language---可接受的语言
+Authorization---客户端提供给客户端，进行权限认证的信息
+Cookie-----携带Cookie信息
+Referer-----当前文档的URL，防盗链
+Cotent-Type---请求体内容的类型、格式
+Content-Length---数据长度
+Cache-Conrol---缓存机制，Cache-Conrol：no cache
+Pragma-----防止页面被缓存
+3. 空一行
+4. 请求体：get请求没有请求体（不需要传参数，参数拼接到URL里），post参数
+
+响应报文：
+1.响应行
+协议版本号
++状态码（
+1xx：提示信息，请求被成功接收
+2xx：成功，请求被成功处理。200ok
+3xx：重定向 304 被缓存起来
+4xx：客户端错误 404 notfound 找不到资源
+5xx：服务端错误 500 服务端程序问题
+）
+2.响应头
+Server-----HTTP服务器的软件信息
+Date-------响应报文的时间
+Expires-----指定缓存过期时间
+Set-Cookie---种Cookie
+Last-Modified---资源的最后修改时间
+Content-Type：
+Content-Length：
+Connection:如Keep-Alive，表示tcp连接不关闭
+Location:指明重定向位置
+3.空一行
+4.请求体
+
+get请求的参数在url后面添加，安全性不好，需要加密处理。
+post请求参数在请求体中间。
+
+http和https的区别
+https是在http基础上通过ssl或tls数据加密传输，验证对方身份以及数据完整性保护
+
+restful
+

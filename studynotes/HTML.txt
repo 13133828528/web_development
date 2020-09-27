@@ -1,0 +1,21 @@
+H5：<!doctype html>
+strong ----- b    em ------ i
+a标签的target属性：在何处打开目标（_blank,_self）rel属性：规定当前文档与目标之间的关系。
+定义在head中的base标签：默认的链接目标地址； link标签：链接到样式表，stylesheet；
+meta标签通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。
+css:内联样式，内部样式表，外部样式表。
+图像:alt 属性用来定义一串预备的可替换的文本（图像无法显示时，显示该文本);map和area属性结合使用，将一张图像分为多个区域，并提供不同的超链接。
+table:border值默认为0，tr为行，th用于表头的单个块，td用于表体的单个块，rowspan&colspan 跨行和跨列，cellpadding:单元格边距，默认为0，cellspacing：单元格间距，默认为0。thead,tbody,tfoot 规定表格的各个部分（表头、主体、页脚）
+列表：无序ul li，有序 ul li，自定义dl dt dd----列表，列表项，列表描述
+块级元素：h，p，ul，table，div（新行开始）
+内联/行内元素：b，td，a，img，span
+vertical-align：该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。
+form表单：单选按钮--radio，复选框--checkbox，下拉列表--select结合option选项使用，optgroup--选项组
+文本域--textarea，label--如果在 label 元素内点击文本，就会触发此控件。
+iframe框架--在当前网页显示一个目标链接的网页。
+不支持 JavaScript 的浏览器会使用noscript元素中定义的内容（文本）来替代。
+ftp文本传输协议：用于将文件从网站上下载或上传。
+300
+1660
+
+
